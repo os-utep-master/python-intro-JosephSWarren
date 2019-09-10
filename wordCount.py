@@ -20,12 +20,19 @@ wordDictionary = {}
 with open(textFname, 'r') as textFile:
     for line in textFile:
         for word in re.split("\s", line):
-            re.sub("\W", '', word)
+            word = re.sub("\W", "", word)
+            word = word.lower();
             if word in wordDictionary:
                 wordDictionary[word]+=1
             else:
                 wordDictionary[word]=1
-sorted(wordDictionary)
+sorted(wordDictionary.items(), key = lambda dictionary: dictionary[0])
+#alphabeticalDictionary = dict.fromkeys(wordDictionary)
+#for word in alphabeticalDictionary:
+#    outputWriter.write("%s %d\n" % (word, alphabeticalDictionary[word]))
+#for word in wordDictionary:
+#    print word
 
-for word in wordDictionary:
-    outputWriter.write("%s %d\n" % (word, wordDictionary[word]))
+
+for word, value in wordDictionary.items():
+    outputWriter.write("%s %d\n" % (word, value))
