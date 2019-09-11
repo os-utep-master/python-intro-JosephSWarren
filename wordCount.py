@@ -3,8 +3,8 @@ import re
 import os
 import subprocess
 
-if len(sys.argv) is not 2:
-    print("Correct usage: wordCount.py <input text file>")
+if len(sys.argv) is not 3:
+    print("Correct usage: wordCount.py <input text file> <output text file>")
     exit()
 
 textFname = sys.argv[1]
@@ -26,40 +26,7 @@ for word in allWords:
     else:
         wordDictionary[word]=1
 
-outputWriter = open("output.txt", "w+")
+outputWriter = open("%s" % sys.argv[2], "w+")
 
-
-
-#alphDict = {}
-#alphList = sorted(wordDictionary.keys())
-#alphDict = {i:0 for i in alphList}
-#for key in alphDict:
-#    alphDict[key]=wordDictionary[key]
-#for word, value in alphDict.items():
-#    outputWriter.write("%s %d\n" % (word, value))
-
-#for key in sorted(wordsFreqDict.keys()):
-#    alphabeticalDictionary[key]
-#    print(key, " :: ", wordsFreqDict[key]
-
-#with open(textFname, 'r') as textFile:
-#    for line in textFile:
-#        print(line)
-#        for word in re.split(r"[-'\s]\s*", line):
-#            print("abc-%s" % word)
-#            word = re.sub("\W", "", word)
-#            word = word.lower();
-#            if word in wordDictionary:
-#                wordDictionary[word]+=1
-#            else:
-#                wordDictionary[word]=1
-#sorted(wordDictionary.items(), key = lambda dictionary: dictionary[0])
-#alphabeticalDictionary = dict.fromkeys(wordDictionary)
-#for word in alphabeticalDictionary:
-#    outputWriter.write("%s %d\n" % (word, alphabeticalDictionary[word]))
-#for word in wordDictionary:
-#    print word
-
-
-#for word, value in wordDictionary.items():
-#    outputWriter.write("%s %d\n" % (word, value))
+for key in sorted(wordDictionary.keys()):
+    outputWriter.write("%s %d\n" % (key, wordDictionary[key]))
